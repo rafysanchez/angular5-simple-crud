@@ -8,36 +8,35 @@ import { Employee } from './models/employee';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  
+
   employeeArray: Employee[] = [
     {id: 1, name: 'Ryan', country: 'USA'},
     {id: 2, name: 'Angelica', country: 'CANADA'},
-    {id: 3, name: 'Joe', country: 'ARGENTINA'}
+    {id: 3, name: 'Joe', country: 'ARGENTINA'},
+    {id: 4, name: 'ZEC', country: 'MEX'},
+    {id: 5, name: 'POTY', country: 'JAPAN'},
+    {id: 6, name: 'ZUC BRAZUCA', country: 'BRAZIL'}
   ];
 
-  selectedEmployee: Employee = {id:0, name: '', country: ''};
+  selectedEmployee: Employee = {id: 0, name: '', country: ''};
 
-  openForEdit(employee: Employee): void 
+  openForEdit(employee: Employee): void
   {
     this.selectedEmployee = employee;
   }
 
-  addOrEdit(): void
-  {
-    if(this.selectedEmployee.id === 0) // INSERT
-    {
+  addOrEdit(): void {
+    if (this.selectedEmployee.id === 0) {
       this.selectedEmployee.id = this.employeeArray.length + 1;
       this.employeeArray.push(this.selectedEmployee);
     }
     this.selectedEmployee = {id:0, name: '', country: ''};
   }
 
-  delete(): void 
-  {
-    if(confirm('Are you sure you want to delete it?'))
-    {
-      this.employeeArray = this.employeeArray.filter(x => x != this.selectedEmployee);
-      this.selectedEmployee = {id:0, name: '', country: ''};
+  delete(): void  {
+    if (confirm('Are you sure you want to delete it?')) {
+      this.employeeArray = this.employeeArray.filter(x => x !== this.selectedEmployee);
+      this.selectedEmployee = {id: 0, name: '', country: ''};
     }
   }
 
